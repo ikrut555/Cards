@@ -1,0 +1,62 @@
+def ln():
+    a=0
+    n=input("Введите номер карты: ")
+    while a==0:
+        try:
+            n=int(n)
+            n=str(n)
+            if 12<len(n) and len(n)<17:
+                print( "Количество цифр допустимое")
+                return n
+                break
+            else:
+                n=input("Неверный номер карты. Повторите ввод: ")
+        except ValueError:
+            n=input("Неверный номер карты. Повторите ввод: ")
+
+def type(n):
+    if n[0]=="4":
+        return print("Visa")
+    elif n[0]=="2":
+        return print("Мир")
+    elif n[0]=="5":
+        return print("MasterCard")
+    elif n[0]=="3" and a[1]=="7":
+        return print("American Express")
+    elif n[0]=="2":
+        return print("Discover")
+    else:
+        return print("Неопознанная платежная система")
+def reverse(n):
+    n=str(n)
+    return n[::-1]
+def change(n):
+    a=0
+    n=str(n)
+    for i in range (1,len(n)+1):
+        if i%2==0:
+            if int(n[i-1])*2>9:
+                a=int(n[i-1])*2
+                a=str(a)
+                a=str(int(a[0])+int(a[1]))
+                n=n[:i-1]+a+n[i:]
+            else:
+                a=str(int(n[i-1])*2)
+                n=n[:i-1]+a+n[i:]
+                
+    return n
+def check(n):
+    a=0
+    n=str(n)
+    for i in range(0,len(n)):
+        a+=int(n[i])
+    if a%10==0:
+        return print("Номер карты верен")
+    else:
+        return print("Номер карты не верен")
+    
+a=ln()
+n=type(a)
+n=reverse(a)
+n=change(n)
+n=check(n)
